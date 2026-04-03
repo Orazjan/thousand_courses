@@ -1,4 +1,13 @@
 package com.atnzvdev.thousand.presentation.profile
 
-class ProfileScreen(onNavigationBack: () -> Boolean) {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun ProfileScreen(onNavigationBack: () -> Boolean) {
+
+}
+
+@Composable
+fun ProfileScreenContent() {
+
 }

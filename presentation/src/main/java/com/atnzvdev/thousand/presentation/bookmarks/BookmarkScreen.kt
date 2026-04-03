@@ -1,4 +1,13 @@
 package com.atnzvdev.thousand.presentation.bookmarks
 
-class BookmarkScreen(onNavigationBack: () -> Boolean) {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun BookmarkScreen(onNavigationBack: () -> Boolean) {
+
+}
+
+@Composable
+fun BookmarkScreenContent() {
+
 }

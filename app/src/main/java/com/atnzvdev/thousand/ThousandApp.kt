@@ -1,8 +1,8 @@
-package com.atnzvdev
+package com.atnzvdev.thousand
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class Application : Application() {
+class ThousandApp : Application() {
 }

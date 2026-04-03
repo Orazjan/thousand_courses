@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.atnzvdev.thousand"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -31,10 +31,6 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
 
     buildFeatures {
         compose = true
@@ -42,10 +38,12 @@ android {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(17)
 }
 dependencies {
     implementation(project(":presentation"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

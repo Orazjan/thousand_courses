@@ -53,13 +53,13 @@ fun MainFlowScreen() {
                 ), exit = slideOutVertically(targetOffsetY = { it })
             ) {
                 NavigationBar(
-                    containerColor = MaterialTheme.colorScheme.primary,
+                    containerColor = MaterialTheme.colorScheme.background,
                     tonalElevation = 8.dp,
                 ) {
                     val navItemColors = NavigationBarItemDefaults.colors(
-                        selectedTextColor = MaterialTheme.colorScheme.primary,
-                        indicatorColor = MaterialTheme.colorScheme.primary,
-                        selectedIconColor = MaterialTheme.colorScheme.onPrimary,
+                        selectedTextColor = MaterialTheme.colorScheme.onSurface,
+                        indicatorColor = MaterialTheme.colorScheme.surface,
+                        selectedIconColor = MaterialTheme.colorScheme.primary,
                         unselectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                         unselectedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
@@ -154,7 +154,7 @@ fun MainFlowScreen() {
             startDestination = HomeRoute,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable<HomeRoute> { MainScreen(onNavigationBack = { bottomNavController.popBackStack() }) }
+            composable<HomeRoute> { MainScreen() }
             composable<BookmarksRoute> { BookmarkScreen(onNavigationBack = { bottomNavController.popBackStack() }) }
             composable<ProfileRoute> { ProfileScreen(onNavigationBack = { bottomNavController.popBackStack() }) }
         }

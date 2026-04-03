@@ -3,24 +3,25 @@ plugins {
     id("com.android.library")
 }
 
-android{
+android {
     namespace = "com.atnzvdev.thousand.domain"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-    kotlin {
-        jvmToolchain(21)
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+    kotlin {
+        jvmToolchain(17)
+    }
 
 
 
 dependencies {
-    implementation(libs.material)
+    implementation(libs.javax.inject)
+    implementation(libs.kotlinx.coroutines.core)
+
     testImplementation(libs.junit)
 }
