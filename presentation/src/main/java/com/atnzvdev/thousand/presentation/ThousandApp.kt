@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.atnzvdev.thousand.presentation.navigation.AuthGraph
 import com.atnzvdev.thousand.presentation.navigation.MainGraph
 import com.atnzvdev.thousand.presentation.navigation.authGraph
 import com.atnzvdev.thousand.presentation.theme.ThousandTheme
@@ -12,7 +13,7 @@ import com.atnzvdev.thousand.presentation.theme.ThousandTheme
 fun ThousandApp() {
     ThousandTheme {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = MainGraph) {
+        NavHost(navController = navController, startDestination = AuthGraph) {
             authGraph(navController)
 
             composable<MainGraph> {
