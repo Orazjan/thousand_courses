@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,6 +26,11 @@ fun PrimaryButton(
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         modifier = modifier.height(50.dp)
     ) {
-        Text(text, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text(
+            text,
+            color = MaterialTheme.colorScheme.onSecondary,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }

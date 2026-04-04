@@ -106,7 +106,7 @@ private fun TagsCloud(modifier: Modifier) {
 private fun TagItem(text: String, isHighlighted: Boolean) {
     Surface(
         shape = RoundedCornerShape(20.dp),
-        color = if (isHighlighted) MaterialTheme.colorScheme.primary else Color(0xFF222224),
+        color = if (isHighlighted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
         modifier = Modifier.graphicsLayer {
             rotationZ = if (isHighlighted) -5f else 0f
         }
@@ -114,7 +114,7 @@ private fun TagItem(text: String, isHighlighted: Boolean) {
         Text(
             text = text,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSecondary,
             fontSize = 14.sp
         )
     }

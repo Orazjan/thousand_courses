@@ -11,10 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.twotone.Bookmark
+import androidx.compose.material.icons.twotone.BookmarkBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -24,11 +25,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.atnzvdev.thousand.presentation.main.CourseUiModel
+import com.atnzvdev.thousand.presentation.theme.SocialColors
 
 @Composable
 fun CourseCard(
@@ -42,7 +44,7 @@ fun CourseCard(
             .fillMaxWidth()
             .clickable { onClick() },
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF2C2C2E))
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column {
             Box(
@@ -53,7 +55,7 @@ fun CourseCard(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xFFFFB74D))
+                        .background(SocialColors.OK)
                 )
 
                 Row(
@@ -71,11 +73,13 @@ fun CourseCard(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .padding(8.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
                 ) {
                     Icon(
-                        imageVector = if (course.isFavorite) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                        imageVector = if (course.isFavorite) Icons.TwoTone.Bookmark else Icons.TwoTone.BookmarkBorder,
                         contentDescription = "В избранное",
-                        tint = if (course.isFavorite) Color(0xFF4CAF50) else Color.White
+                        tint = if (course.isFavorite) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onBackground
                     )
                 }
             }
@@ -84,14 +88,14 @@ fun CourseCard(
                 Text(
                     text = course.title,
                     style = MaterialTheme.typography.titleLarge,
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = course.text,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Gray,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -104,12 +108,12 @@ fun CourseCard(
                     Text(
                         text = course.priceText,
                         style = MaterialTheme.typography.titleMedium,
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.onSecondary,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = "Подробнее →",
-                        color = Color(0xFF4CAF50),
+                        color = MaterialTheme.colorScheme.secondary,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.clickable(enabled = true, onClick = {})
                     )

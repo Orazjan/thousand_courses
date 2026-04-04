@@ -3,28 +3,33 @@ package com.atnzvdev.thousand.presentation.theme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 
 private val AppDarkColorScheme = darkColorScheme(
     primary = GreenPrimary,
-    onPrimary = Color.White,
+    onPrimary = White,
+
+    secondary = GreenAccent,
+    onSecondary = White,
 
     background = DarkBackground,
-    onBackground = Color.White,
+    onBackground = White,
 
     surface = DarkSurface,
-    onSurface = Color.White,
+    onSurface = White,
 
-    surfaceVariant = DarkSurface,
+    surfaceVariant = DarkSurfaceVariant,
     onSurfaceVariant = GrayText,
 
-    outlineVariant = DividerGray
+    error = ErrorRed,
+    onError = White,
+
+    outlineVariant = DividerColor,
+    outline = Transparent,
+    scrim = ScrimBlack
 )
 
 @Composable
-fun ThousandTheme(
-    content: @Composable () -> Unit
-) {
+fun ThousandTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = AppDarkColorScheme,
         typography = Typography,

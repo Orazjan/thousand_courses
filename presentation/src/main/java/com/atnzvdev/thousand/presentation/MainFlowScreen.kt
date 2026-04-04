@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.twotone.Bookmark
+import androidx.compose.material.icons.twotone.Home
+import androidx.compose.material.icons.twotone.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -53,15 +53,15 @@ fun MainFlowScreen() {
                 ), exit = slideOutVertically(targetOffsetY = { it })
             ) {
                 NavigationBar(
-                    containerColor = MaterialTheme.colorScheme.background,
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
                     tonalElevation = 8.dp,
                 ) {
                     val navItemColors = NavigationBarItemDefaults.colors(
                         selectedTextColor = MaterialTheme.colorScheme.onSurface,
                         indicatorColor = MaterialTheme.colorScheme.surface,
                         selectedIconColor = MaterialTheme.colorScheme.primary,
-                        unselectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-                        unselectedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                        unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                        unselectedTextColor = MaterialTheme.colorScheme.onSurface
                     )
 
                     NavigationBarItem(
@@ -77,7 +77,7 @@ fun MainFlowScreen() {
                         },
                         icon = {
                             Icon(
-                                Icons.Default.Home,
+                                Icons.TwoTone.Home,
                                 contentDescription = "Home Icon",
                                 modifier = Modifier.size(24.dp)
                             )
@@ -105,7 +105,7 @@ fun MainFlowScreen() {
                         },
                         icon = {
                             Icon(
-                                Icons.Default.Bookmark,
+                                Icons.TwoTone.Bookmark,
                                 contentDescription = "Favorite Icon",
                                 modifier = Modifier.size(24.dp)
                             )
@@ -132,7 +132,7 @@ fun MainFlowScreen() {
                         },
                         icon = {
                             Icon(
-                                Icons.Default.Person,
+                                Icons.TwoTone.Person,
                                 contentDescription = "Profile Icon",
                                 modifier = Modifier.size(24.dp)
                             )

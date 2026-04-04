@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.twotone.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,22 +24,22 @@ fun RatingBadge(rating: String, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .background(
-                color = Color.Black.copy(alpha = 0.6f),
+                color = MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f),
                 shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = 8.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = Icons.Default.Star,
+            imageVector = Icons.TwoTone.Star,
             contentDescription = null,
-            tint = Color(0xFF4CAF50),
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(14.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
             text = rating,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.labelSmall
         )
     }
@@ -50,8 +50,7 @@ fun DateBadge(date: String, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .background(
-                color = Color.Black.copy(alpha = 0.6f),
-                shape = RoundedCornerShape(8.dp)
+                color = Color.Black.copy(alpha = 0.6f), shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = 8.dp, vertical = 4.dp),
         contentAlignment = Alignment.Center

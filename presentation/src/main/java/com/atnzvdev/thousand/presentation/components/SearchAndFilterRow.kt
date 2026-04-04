@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.twotone.Clear
+import androidx.compose.material.icons.twotone.FilterAlt
+import androidx.compose.material.icons.twotone.Search
+import androidx.compose.material.icons.twotone.SwapVert
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -44,25 +44,29 @@ fun SearchAndFilterRow(
             modifier = Modifier
                 .weight(1f)
                 .height(52.dp),
-            placeholder = { Text("Поиск...", color = Color.Gray) },
+            placeholder = { Text("Поиск...", color = MaterialTheme.colorScheme.surfaceVariant) },
             leadingIcon = {
-                Icon(Icons.Default.Search, contentDescription = null, tint = Color.Gray)
+                Icon(
+                    Icons.TwoTone.Search,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.9f)
+                )
             },
             trailingIcon = {
                 if (query.isNotEmpty()) {
                     IconButton(onClick = { onQueryChange("") }) {
-                        Icon(Icons.Default.Clear, contentDescription = "Clear", tint = Color.Gray)
+                        Icon(Icons.TwoTone.Clear, contentDescription = "Clear", tint = Color.Gray)
                     }
                 }
             },
             shape = RoundedCornerShape(26.dp),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = Color(0xFF2C2C2E),
-                unfocusedContainerColor = Color(0xFF2C2C2E),
-                focusedBorderColor = Color.Transparent,
-                unfocusedBorderColor = Color.Transparent,
-                focusedTextColor = Color.White,
-                unfocusedTextColor = Color.White
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                focusedBorderColor = MaterialTheme.colorScheme.outline,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                focusedTextColor = MaterialTheme.colorScheme.onSecondary,
+                unfocusedTextColor = MaterialTheme.colorScheme.onSecondary
             ),
             singleLine = true
         )
@@ -71,9 +75,16 @@ fun SearchAndFilterRow(
             onClick = onFilterClick,
             modifier = Modifier
                 .size(52.dp)
-                .background(Color(0xFF2C2C2E), shape = RoundedCornerShape(50))
+                .background(
+                    MaterialTheme.colorScheme.surfaceVariant,
+                    shape = RoundedCornerShape(50)
+                )
         ) {
-            Icon(Icons.Default.Tune, contentDescription = "Filter", tint = Color.White)
+            Icon(
+                Icons.TwoTone.FilterAlt,
+                contentDescription = "Filter",
+                tint = MaterialTheme.colorScheme.onSecondary.copy(0.9f)
+            )
         }
     }
 }
@@ -93,13 +104,14 @@ fun SortRow(
     ) {
         Text(
             text = "По дате добавления",
-            color = Color(0xFF4CAF50),
+            color = MaterialTheme.colorScheme.secondary,
             style = MaterialTheme.typography.bodyMedium
         )
         Icon(
-            imageVector = Icons.Default.KeyboardArrowDown,
+            imageVector = Icons.TwoTone.SwapVert,
             contentDescription = null,
-            tint = Color(0xFF4CAF50)
-        )
+            tint = MaterialTheme.colorScheme.secondary,
+
+            )
     }
 }

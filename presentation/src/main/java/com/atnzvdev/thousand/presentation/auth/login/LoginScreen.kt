@@ -24,7 +24,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -37,6 +36,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.atnzvdev.thousand.presentation.components.PrimaryButton
 import com.atnzvdev.thousand.presentation.components.PrimaryTextField
+import com.atnzvdev.thousand.presentation.theme.SocialColors
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -190,12 +190,12 @@ fun LoginScreen(
         ) {
             PrimaryButton(
                 text = "VK",
-                backgroundColor = Color(0xFF2787F5),
+                backgroundColor = SocialColors.VK,
                 modifier = Modifier.weight(1f),
                 onClick = { viewModel.onAction(LoginAction.OnVkClicked) })
             PrimaryButton(
                 text = "OK",
-                backgroundColor = Color(0xFFEE8208),
+                backgroundColor = SocialColors.OK,
                 modifier = Modifier.weight(1f),
                 onClick = { viewModel.onAction(LoginAction.OnOkClicked) })
         }
