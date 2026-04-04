@@ -25,3 +25,6 @@ object RegisterRoute
 
 @Serializable
 object ResetPasswordRoute
+
+@Serializable
+data object OnboardingRoute

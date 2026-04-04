@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -25,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -89,8 +91,10 @@ fun LoginScreen(
             value = state.userEmail,
             onValueChange = { viewModel.onAction(LoginAction.OnEmailChanged(it)) },
             placeholder = "example@gmail.com",
+            keyboardType = KeyboardType.Email,
             isError = state.emailError != null,
-            keyboardType = KeyboardType.Email
+            isPassword = false,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         )
         if (state.emailError != null) {
             Text(
@@ -114,7 +118,8 @@ fun LoginScreen(
             placeholder = "Введите пароль",
             isError = state.passwordError != null,
             keyboardType = KeyboardType.Password,
-            isPassword = true
+            isPassword = true,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         )
         if (state.passwordError != null) {
             Text(
@@ -163,7 +168,7 @@ fun LoginScreen(
                 text = "Регистрация",
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.clickable { viewModel.onAction(LoginAction.OnRegisterClicked) })
+                modifier = Modifier.clickable { })
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -174,7 +179,7 @@ fun LoginScreen(
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .clickable { viewModel.onAction(LoginAction.OnForgotPasswordClicked) })
+                .clickable { })
 
         Spacer(modifier = Modifier.height(32.dp))
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant, thickness = 1.dp)

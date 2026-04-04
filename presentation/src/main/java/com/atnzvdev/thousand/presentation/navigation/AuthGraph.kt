@@ -12,9 +12,16 @@ import androidx.navigation.navigation
 import com.atnzvdev.thousand.presentation.auth.login.LoginScreen
 import com.atnzvdev.thousand.presentation.auth.login.SocialProvider
 import com.atnzvdev.thousand.presentation.auth.registration.RegistrationScreen
+import com.atnzvdev.thousand.presentation.auth.resetPassword.ResetPasswordScreen
+import com.atnzvdev.thousand.presentation.onBoarding.OnboardingScreen
 
 fun NavGraphBuilder.authGraph(navController: NavController) {
-    navigation<AuthGraph>(startDestination = LoginRoute) {
+    navigation<AuthGraph>(startDestination = OnboardingRoute) {
+        composable<OnboardingRoute> {
+            OnboardingScreen(onNextClick = {
+                navController.navigate(LoginRoute)
+            })
+        }
         composable<LoginRoute> {
             val context = LocalContext.current
             LoginScreen(
@@ -39,12 +46,15 @@ fun NavGraphBuilder.authGraph(navController: NavController) {
                     }
                 }
             )
+        }
 
-            composable<RegisterRoute> {
-                RegistrationScreen(
-                    onBackClick = { navController.popBackStack() }
-                )
-            }
+        composable<RegisterRoute> {
+            RegistrationScreen(
+                onNavigateBack = { navController.popBackStack() })
+        }
+
+        composable<ResetPasswordRoute> {
+            ResetPasswordScreen(onBackClick = { navController.popBackStack() })
         }
     }
 }

@@ -22,7 +22,8 @@ fun PrimaryTextField(
     placeholder: String,
     isError: Boolean,
     keyboardType: KeyboardType,
-    isPassword: Boolean = false
+    isPassword: Boolean = false,
+    keyboardOptions: KeyboardOptions
 ) {
     TextField(
         value = value,

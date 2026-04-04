@@ -1,4 +1,11 @@
 package com.atnzvdev.thousand.presentation.auth.registration
 
-class RegistrationScreen(onBackClick: () -> Boolean) {
+import androidx.compose.runtime.Composable
+
+
+@Composable
+fun RegistrationScreen(
+    onNavigateBack: () -> Unit
+) {
+
 }
