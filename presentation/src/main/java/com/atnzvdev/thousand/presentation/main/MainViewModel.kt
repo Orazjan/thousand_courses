@@ -78,8 +78,8 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val currentState = _uiState.value.screenState
 
-            if (currentState !is ScreenState.Content) _uiState.value =
-                MainUiState(ScreenState.Loading)
+            if (currentState !is ScreenState.Content)
+                _uiState.value = MainUiState(ScreenState.Loading)
 
             val result = fetchCoursesUseCase()
 

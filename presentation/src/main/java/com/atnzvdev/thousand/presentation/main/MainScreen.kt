@@ -62,7 +62,8 @@ fun MainScreenContent(
             is ScreenState.Error -> {
                 MainErrorContent(
                     innerPadding = innerPadding,
-                    message = screenState.message
+                    message = screenState.message,
+                    onAction = onAction
                 )
             }
         }
@@ -86,8 +87,11 @@ private fun MainLoadingContent(
 @Composable
 private fun MainErrorContent(
     innerPadding: PaddingValues,
-    message: String
+    message: String,
+    onAction: (MainAction) -> Unit
 ) {
+    MainHeader(onSortClick = { onAction(MainAction.SortByPublishDate) })
+
     Box(
         modifier = Modifier
             .fillMaxSize()

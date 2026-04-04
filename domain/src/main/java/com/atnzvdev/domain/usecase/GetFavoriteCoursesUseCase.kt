@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetFavoriteCoursesUseCase @Inject constructor(
-    val repository: CourseRepository
+    private val repository: CourseRepository
 ) {
     operator fun invoke(): Flow<List<Course>> {
         return repository.getFavoriteCourses()

@@ -110,7 +110,8 @@ fun CourseCard(
                     Text(
                         text = "Подробнее →",
                         color = Color(0xFF4CAF50),
-                        fontWeight = FontWeight.SemiBold
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.clickable(enabled = true, onClick = {})
                     )
                 }
             }

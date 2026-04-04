@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
@@ -105,7 +105,7 @@ fun MainFlowScreen() {
                         },
                         icon = {
                             Icon(
-                                Icons.Default.Favorite,
+                                Icons.Default.Bookmark,
                                 contentDescription = "Favorite Icon",
                                 modifier = Modifier.size(24.dp)
                             )
@@ -155,7 +155,7 @@ fun MainFlowScreen() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable<HomeRoute> { MainScreen() }
-            composable<BookmarksRoute> { BookmarkScreen(onNavigationBack = { bottomNavController.popBackStack() }) }
+            composable<BookmarksRoute> { BookmarkScreen() }
             composable<ProfileRoute> { ProfileScreen(onNavigationBack = { bottomNavController.popBackStack() }) }
         }
     }
