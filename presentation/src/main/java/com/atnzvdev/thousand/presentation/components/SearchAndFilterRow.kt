@@ -23,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -44,18 +43,27 @@ fun SearchAndFilterRow(
             modifier = Modifier
                 .weight(1f)
                 .height(52.dp),
-            placeholder = { Text("Поиск...", color = MaterialTheme.colorScheme.surfaceVariant) },
+            placeholder = {
+                Text(
+                    "Поиск...",
+                    color = MaterialTheme.colorScheme.onSecondary.copy(0.5f)
+                )
+            },
             leadingIcon = {
                 Icon(
                     Icons.TwoTone.Search,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.9f)
+                    tint = MaterialTheme.colorScheme.onSecondary.copy(0.9f)
                 )
             },
             trailingIcon = {
                 if (query.isNotEmpty()) {
                     IconButton(onClick = { onQueryChange("") }) {
-                        Icon(Icons.TwoTone.Clear, contentDescription = "Clear", tint = Color.Gray)
+                        Icon(
+                            Icons.TwoTone.Clear,
+                            contentDescription = "Clear",
+                            tint = MaterialTheme.colorScheme.onSecondary.copy(0.9f)
+                        )
                     }
                 }
             },
@@ -98,7 +106,7 @@ fun SortRow(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onSortClick() }
-            .padding(vertical = 8.dp),
+            .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {

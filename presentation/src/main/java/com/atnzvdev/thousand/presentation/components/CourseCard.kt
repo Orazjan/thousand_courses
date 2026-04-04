@@ -95,7 +95,7 @@ fun CourseCard(
                 Text(
                     text = course.text,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    color = MaterialTheme.colorScheme.onSecondary.copy(0.5f),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )

@@ -9,8 +9,10 @@ import com.atnzvdev.domain.usecase.SortCoursesByPublishDateUseCase
 import com.atnzvdev.domain.usecase.ToggleFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,6 +27,9 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState = _uiState.asStateFlow()
+    private val _event = Channel<MainEvent>()
+    val event = _event.receiveAsFlow()
+
     private var isSortApplied = false
     private var latestCourses: List<Course> = emptyList()
 
@@ -47,7 +52,8 @@ class MainViewModel @Inject constructor(
 
             is MainAction.ToggleBookmark -> toggleFavorite(action.courseId)
             is MainAction.OnCourseClicked -> {
-                TODO("В ТЗ не было перехода к деталям")
+                _event.trySend(MainEvent.ShowSnackbar("Переход к деталям"))
+
             }
         }
     }
@@ -87,7 +93,13 @@ class MainViewModel @Inject constructor(
                 if (latestCourses.isEmpty()) {
                     _uiState.value = MainUiState(
                         ScreenState.Error(
-                            throwable.message ?: "Ошибка загрузки курсов"
+                            "Не удалось загрузить курсы"
+                        )
+                    )
+                } else {
+                    _event.trySend(
+                        MainEvent.ShowSnackbar(
+                            "Не удалось обновить данные"
                         )
                     )
                 }
@@ -97,18 +109,32 @@ class MainViewModel @Inject constructor(
     }
 
     private fun sortCourses() {
-        isSortApplied = true
+        isSortApplied = !isSortApplied
         updateContentState(latestCourses)
     }
 
-    private fun updateContentState(latestCourses: List<Course>) {
+    private fun updateContentState(courses: List<Course>) {
         val finalCourses = if (isSortApplied) {
-            sortCoursesByPublishDateUseCase(courses = latestCourses)
-        } else latestCourses
+            sortCoursesByPublishDateUseCase(courses)
+        } else {
+            courses
+        }
 
         val uiCourses = courseUiMapper.mapList(finalCourses)
 
-        _uiState.value = MainUiState(ScreenState.Content(uiCourses))
+        _uiState.value = when {
+            uiCourses.isNotEmpty() -> {
+                MainUiState(ScreenState.Content(uiCourses))
+            }
+
+            _uiState.value.screenState is ScreenState.Error -> {
+                _uiState.value
+            }
+
+            else -> {
+                MainUiState(ScreenState.Empty)
+            }
+        }
     }
 
 }

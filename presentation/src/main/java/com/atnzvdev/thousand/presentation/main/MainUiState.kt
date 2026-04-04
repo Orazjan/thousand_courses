@@ -6,6 +6,7 @@ data class MainUiState(
 
 sealed interface ScreenState {
     data object Loading : ScreenState
+    data object Empty : ScreenState
     data class Content(val courses: List<CourseUiModel>) : ScreenState
     data class Error(val message: String) : ScreenState
 }
